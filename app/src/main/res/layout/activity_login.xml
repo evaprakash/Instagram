@@ -50,7 +50,8 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:backgroundTint="@color/blue"
+        android:text="Log in" />
 
     <Button
         android:id="@+id/btnSignUp"
@@ -58,5 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="50dp"
-        android:text="Sign Up" />
+        android:backgroundTint="@color/white"
+        android:text="Sign Up"
+        android:textColor="@color/blue" />
 </LinearLayout>

@@ -2,80 +2,66 @@ package com.example.instagram;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.instagram.fragments.ComposeFragment;
+import com.example.instagram.fragments.PostsFragment;
+import com.example.instagram.fragments.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnLogout;
-    private ImageButton btnPost;
-    private ImageButton btnFeed;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        btnLogout = findViewById(R.id.btnLogout);
-        btnPost = findViewById(R.id.btnPost);
-        btnFeed = findViewById(R.id.btnFeed);
-
         if (ParseUser.getCurrentUser() == null) {
             logOut();
         }
 
-        btnPost.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                goToPost();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        fragment = new PostsFragment();
+                        break;
+                    case R.id.action_compose:
+                        fragment = new ComposeFragment();
+                        break;
+                    case R.id.action_profile:
+                        fragment = new ProfileFragment();
+                        break;
+                    case R.id.action_logout:
+                    default:
+                        fragment = new PostsFragment();
+                        logOut();
+                        break;
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                return true;
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logOut();
-            }
-        });
-
-        btnFeed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToFeed();
-            }
-        });
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        //Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
     private void logOut() {
         ParseUser.logOut();
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(i);
-        finish();
-    }
-
-    private void goToPost() {
-        Intent i = new Intent(MainActivity.this, PostActivity.class);
-        startActivity(i);
-        finish();
-    }
-
-    private void goToFeed() {
-        Intent i = new Intent(MainActivity.this, FeedActivity.class);
         startActivity(i);
         finish();
     }

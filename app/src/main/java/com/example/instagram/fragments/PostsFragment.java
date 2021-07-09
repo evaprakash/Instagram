@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.Post;
 import com.example.instagram.PostsAdapter;
 import com.example.instagram.R;
@@ -21,6 +22,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +35,7 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
     private SwipeRefreshLayout swipeContainer;
+    private EndlessRecyclerViewScrollListener scrollListener;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -70,11 +73,59 @@ public class PostsFragment extends Fragment {
         rvPosts.setAdapter(adapter);
 
         // Set the layout manager on the recycler view
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rvPosts.setLayoutManager(linearLayoutManager);
+
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                queryMorePosts(allPosts.get(allPosts.size() - 1).getCreatedAt());
+                scrollListener.resetState();
+            }
+        };
+        // Adds the scroll listener to RecyclerView
+        rvPosts.addOnScrollListener(scrollListener);
 
         // Query posts from Parstagram
         queryPosts();
 
+    }
+
+    protected void queryMorePosts(Date createdAt) {
+        // Specify what type of data we want to query - Post.class
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+
+        // Include data referred by user key
+        query.include(Post.KEY_USER);
+
+        // Limit query to latest 20 items
+        query.setLimit(20);
+        query.whereLessThan("createdAt", createdAt);
+        // Order posts by creation date (newest first)
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+
+        // Start an asynchronous call for posts
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                // Check for errors
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+
+                // For debugging purposes, print every post description to logcat
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                }
+
+                // Save received posts to list and notify adapter of new data
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     protected void queryPosts() {

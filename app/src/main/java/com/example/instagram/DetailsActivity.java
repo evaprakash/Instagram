@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+
+import org.parceler.Parcels;
+
 import java.util.Date;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -26,15 +30,14 @@ public class DetailsActivity extends AppCompatActivity {
         imagePost = findViewById(R.id.imagePost);
         caption = findViewById(R.id.caption);
         createdAt = findViewById(R.id.createdAt);
-        /*
-        post = (Post) Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
 
-        username.setText(post.getUser().getObjectId());
+        post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
+
+        username.setText(post.getUser().getUsername());
         caption.setText(post.getDescription());
-        Glide.with(DetailsActivity.this).load(post.getImage()).into(imagePost);
+        Glide.with(DetailsActivity.this).load(post.getImage().getUrl()).into(imagePost);
         createdAt.setText(calculateTimeAgo(post.getCreatedAt()));
 
-         */
     }
 
     public static String calculateTimeAgo(Date createTime) {

@@ -29,6 +29,10 @@ The following **stretch** features are implemented:
   - [ ] Profile Tab (to view only the current user's posts, in a grid)
 - [ ] Show the username and creation time for each post
 
+The following **stretch** features are implemented:
+
+- [ ] Log out button is part of Bottom Navigation View for easy access
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. How to include ProgressBar

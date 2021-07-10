@@ -40,6 +40,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
+App icon in home screen:
+
+<img src='https://github.com/evaprakash/Instagram/blob/master/AppIcon.png' title='App Icon' width='' alt='App Icon' />
+
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/evaprakash/Instagram/blob/master/Instagram.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />

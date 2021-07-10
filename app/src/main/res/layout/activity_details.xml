@@ -68,7 +68,7 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/viewAllComments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View all comments" />

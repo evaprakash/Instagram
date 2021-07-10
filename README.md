@@ -1,8 +1,8 @@
 # Project 4 - Instagram
 
-Instagram is a photo sharing app using Parse as its backend.
+**Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: 20 hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -17,6 +17,7 @@ The following **required** functionality is completed:
 - [X] User can view the last 20 posts submitted to "Instagram"
 - [X] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [X] User can tap a post to go to a Post Details activity, which includes timestamp and caption.
+- [X] User sees app icon in home screen
 
 The following **stretch** features are implemented:
 
@@ -28,6 +29,14 @@ The following **stretch** features are implemented:
   - [X] Capture Tab (to make a new post using the Camera and Photo Gallery)
   - [X] Profile Tab (to view only the current user's posts, in a grid)
 - [X] Show the username and creation time for each post
+- User Profiles:
+  - [ ] Allow the logged in user to add a profile photo
+  - [ ] Display the profile photo with each post
+  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+  - [ ] User Profile shows posts in a grid
+- [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
+- [ ] User can comment on a post and see all comments for each post in the post details screen.
+- [ ] User can like a post and see number of likes for each post in the post details screen.
 
 The following **additional** features are implemented:
 
@@ -38,15 +47,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1. How to include ProgressBar
 2. How to track likes/comments/profile pictures
 
-## Walkthrough
-
-App icon in home screen:
-
-<img src='https://github.com/evaprakash/Instagram/blob/master/AppIcon.png' title='App Icon' width='' alt='App Icon' />
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/evaprakash/Instagram/blob/master/Instagram.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 ## Credits
 

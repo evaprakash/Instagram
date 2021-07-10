@@ -38,7 +38,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1. How to include ProgressBar
 2. How to track likes/comments/profile pictures
 
-## Video Walkthrough
+## Walkthrough
 
 App icon in home screen:
 

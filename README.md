@@ -29,7 +29,7 @@ The following **stretch** features are implemented:
   - [X] Profile Tab (to view only the current user's posts, in a grid)
 - [X] Show the username and creation time for each post
 
-The following **stretch** features are implemented:
+The following **additional** features are implemented:
 
 - [X] Log out button is part of Bottom Navigation View for easy access
 

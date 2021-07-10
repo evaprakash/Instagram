@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
         tools:text="rahul" />
 
     <ImageView
@@ -21,10 +22,47 @@
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/heart"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ufi_heart" />
+
+        <ImageButton
+            android:id="@+id/bubble"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ufi_comment" />
+
+        <ImageButton
+            android:id="@+id/plane"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="220dp"
+            android:background="@drawable/ufi_new_direct" />
+
+        <ImageButton
+            android:id="@+id/flag"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/ufi_save" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/black"
         tools:text="trying to look hipster" />
 </LinearLayout>

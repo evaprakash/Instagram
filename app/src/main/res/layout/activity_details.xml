@@ -12,7 +12,9 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imagePost"
@@ -22,11 +24,54 @@
         tools:layout_editor_absoluteY="118dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/heart"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ufi_heart" />
+
+        <ImageButton
+            android:id="@+id/bubble"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ufi_comment" />
+
+        <ImageButton
+            android:id="@+id/plane"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="250dp"
+            android:background="@drawable/ufi_new_direct" />
+
+        <ImageButton
+            android:id="@+id/flag"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/ufi_save" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View all comments" />
 
     <TextView
         android:id="@+id/createdAt"

@@ -43,8 +43,6 @@ public class ProfileFragment extends PostsFragment {
         rvPosts.setLayoutManager(linearLayoutManager);
 
         queryPosts();
-
-
     }
 
     @Override
@@ -67,38 +65,11 @@ public class ProfileFragment extends PostsFragment {
                 for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
-                //adapter.clear();
+
                 allPosts.clear();
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
         });
-
     }
-
-    //    protected void queryPosts() {
-//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-//        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
-//        query.include(Post.KEY_USER);
-//        query.setLimit(20);
-//        query.addDescendingOrder(Post.KEY_CREATED_KEY);
-//        query.findInBackground(new FindCallback<Post>() {
-//            @Override
-//            public void done(List<Post> posts, ParseException e) {
-//
-//                if (e != null) {
-//                    Log.e(TAG, "Issue with getting posts", e);
-//                    return;
-//                }
-//
-//                for (Post post : posts) {
-//                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-//                }
-//                adapter.clear();
-//                allPosts.clear();
-//                allPosts.addAll(posts);
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
 }

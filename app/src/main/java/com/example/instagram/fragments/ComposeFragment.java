@@ -76,7 +76,6 @@ public class ComposeFragment extends Fragment {
             }
         });
 
-        //queryPosts();
         btnSubmitImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
